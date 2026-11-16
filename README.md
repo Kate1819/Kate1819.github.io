@@ -15,4 +15,4 @@ My little universe of interactive worlds.
 
 ## Updating the site
 
-All personal details (name, intro, about, skills, background, LinkedIn, email, CV) live in **`edit-me.js`**. Open it on GitHub, click the pencil, change the text between the quotes and commit. Anything left empty stays hidden.
+Everything you write lives in **`edit-me.js`**: name, intro, about, skills, background, links, the projects (title, text, links, picture, colour) and the words in the ribbon. To add a project picture, upload it to the `images` folder first. Open it on GitHub, click the pencil, change the text between the quotes and commit. Anything left empty stays hidden.
