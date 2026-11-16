@@ -116,6 +116,20 @@ window.PROFILE = {
     },
   ],
 
+  // ---------------- AUTOMATIC PROJECTS ----------------
+  // New projects can appear on your site by themselves, with no editing here.
+  // On GitHub, open the new repository, click the gear next to "About",
+  // type  portfolio  under Topics and save. It shows on your site straight away.
+  // It uses the repository's name and description, its GitHub Pages link,
+  // and a picture called preview.png in that repository if there is one.
+  // Projects already listed above are never shown twice.
+  autoProjects: {
+    on: true,                 // change to false to turn this off
+    githubUser: "Kate1819",
+    topic: "portfolio",
+    hide: [],                 // repository names to never show, e.g. ["Test-3"]
+  },
+
   // The words that scroll across the coloured ribbon.
   ribbon: ["Interactive 3D", "Playful games", "Explorable explainers", "Sound & music", "Curious ideas"],
 

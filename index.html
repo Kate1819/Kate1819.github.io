@@ -342,16 +342,18 @@ footer a:hover{color:var(--ink)}
   var ARROW = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5"/></svg>';
   var projects = (P.projects || []).filter(function(p){ return p && p.title; });
   function ext(a){ a.target = '_blank'; a.rel = 'noopener'; return a; }
-  if (projects.length){
-    var work = document.querySelector('.work'); work.innerHTML = '';
-    projects.forEach(function(p, i){
-      var col = COLORS[p.color] || COLORS[['blue','lime','orange','pink'][i % 4]];
+  var work = document.querySelector('.work'), cardCount = 0;
+  function addCard(p){
+      var i = cardCount++;
+      var col = COLORS[p.color] || COLORS[['blue','lime','orange','pink','yellow','sky'][i % 6]];
       var art = el('article', 'project reveal' + (i % 2 ? ' flip' : '')); art.id = 'w-' + i;
       art.style.setProperty('--c', col[0]); if (col[1]) art.style.setProperty('--fg', col[1]);
       var shot = el('a', 'shot'); shot.href = p.link || '#'; if (p.link) ext(shot);
-      var img = el('img'); img.src = p.image || ''; img.alt = p.title; img.width = 1200; img.height = 630; if (i) img.loading = 'lazy';
+      var img = el('img'); img.alt = p.title; img.width = 1200; img.height = 630; if (i) img.loading = 'lazy';
+      var srcs = [].concat(p.image || [], p.fallbackImages || []);
+      img.onerror = function(){ srcs.shift(); if (srcs.length) img.src = srcs[0]; };
+      img.src = srcs[0] || '';
       shot.appendChild(img); art.appendChild(shot);
-      
       var body = el('div', 'body');
       if (p.kind) body.appendChild(el('p', 'kind', p.kind));
       body.appendChild(el('h3', '', p.title));
@@ -360,7 +362,11 @@ footer a:hover{color:var(--ink)}
       if (p.link){ var g = ext(el('a', 'go')); g.href = p.link; g.textContent = (p.linkText || 'Open') + ' '; g.insertAdjacentHTML('beforeend', ARROW); links.appendChild(g); }
       if (p.source){ var sc = ext(el('a', 'src', 'Source')); sc.href = p.source; links.appendChild(sc); }
       body.appendChild(links); art.appendChild(body); work.appendChild(art);
-    });
+      return art;
+  }
+  if (projects.length){
+    work.innerHTML = '';
+    projects.forEach(function(p){ addCard(p); });
     var tiles = document.querySelectorAll('.collage .tile');
     tiles.forEach(function(t, i){
       var p = projects[i]; if (!p){ t.remove(); return; }
@@ -375,8 +381,41 @@ footer a:hover{color:var(--ink)}
     for (var rep = 0; rep < 2; rep++) P.ribbon.forEach(function(w, i){ var sp = el('span', '', w); sp.style.setProperty('--c', 'var(--' + cs[i % 5] + ')'); tr.appendChild(sp); });
   }
 
-  $('yr').textContent = new Date().getFullYear();
-
+  // ---- new projects straight from GitHub ----
+  // Public repositories tagged with the topic set in edit-me.js (default "portfolio")
+  // are added after the hand-written projects, unless they are already listed there.
+  var A = P.autoProjects || {};
+  if (A.on !== false && A.githubUser && window.fetch){
+    var topic = (A.topic || 'portfolio').toLowerCase(), user = A.githubUser;
+    var hidden = (A.hide || []).map(function(n){ return String(n).toLowerCase(); });
+    var known = projects.map(function(p){ return ((p.link || '') + ' ' + (p.source || '') + ' ').toLowerCase(); }).join(' ');
+    var nice = function(name){ return name.replace(/[-_]+/g, ' ').replace(/\b\w/g, function(c){ return c.toUpperCase(); }); };
+    fetch('https://api.github.com/users/' + encodeURIComponent(user) + '/repos?per_page=100&sort=created')
+      .then(function(r){ return r.ok ? r.json() : []; })
+      .then(function(repos){
+        repos.filter(function(r){
+          var n = r.name.toLowerCase();
+          return !r.fork && !r.archived && (r.topics || []).map(function(t){ return t.toLowerCase(); }).indexOf(topic) > -1
+            && hidden.indexOf(n) < 0 && known.indexOf('/' + n + '/') < 0 && known.indexOf('/' + n + ' ') < 0
+            && n !== (user + '.github.io').toLowerCase();
+        }).sort(function(a, b){ return new Date(b.created_at) - new Date(a.created_at); })
+          .forEach(function(r){
+            var site = r.homepage || (r.has_pages ? 'https://' + user.toLowerCase() + '.github.io/' + r.name + '/' : '');
+            var art = addCard({
+              title: nice(r.name),
+              kind: 'New project',
+              description: r.description || '',
+              link: site || r.html_url,
+              linkText: site ? 'Open' : 'View on GitHub',
+              source: site ? r.html_url : '',
+              image: site ? site.replace(/\/?$/, '/') + 'preview.png' : '',
+              fallbackImages: ['https://opengraph.githubassets.com/1/' + user + '/' + r.name]
+            });
+            art.classList.add('in');
+          });
+      })
+      .catch(function(){});
+  }
 
   $('yr').textContent = new Date().getFullYear();
 
