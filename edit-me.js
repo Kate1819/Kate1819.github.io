@@ -29,6 +29,11 @@ window.PROFILE = {
   // Where you are based (optional), e.g. "Manchester, UK".
   location: "",
 
+  // The short film under the top of the page. Upload a new video (.mp4)
+  // to the media folder and put its name here. Use "" to hide the film.
+  introVideo: "media/kate-intro.mp4",
+  introPoster: "media/kate-intro-poster.jpg",   // the still shown before it plays
+
   // ---------------- ABOUT ----------------
   // A few short paragraphs about you. Each paragraph goes in its own quotes,
   // separated by commas. The first one is shown larger.

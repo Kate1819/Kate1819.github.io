@@ -15,6 +15,7 @@ You can do everything on this page in the GitHub website. You don't need to inst
 4. [Change or add a picture](#4-change-or-add-a-picture)
 5. [Publish a brand new project with its own link](#5-publish-a-brand-new-project-with-its-own-link)
 6. [Hide a project](#6-hide-a-project)
+8. [Change or hide the intro film](#8-change-or-hide-the-intro-film)
 7. [If something goes wrong](#7-if-something-goes-wrong)
 
 ---
@@ -146,3 +147,13 @@ This is how your other projects were published. Each project gets its own addres
 - **A change doesn't show:** wait a minute and refresh. On a phone, close the tab and open the link again.
 - **Check that the site is being published:** open the repository's **Actions** tab. A green tick means your last change is live. A red cross means GitHub couldn't publish it, so try saving the change again.
 - **Undo anything:** every change is kept in **History**, so you can always look up the old text and copy it back.
+
+---
+
+## 8. Change or hide the intro film
+
+The short film under the top of the page is `media/kate-intro.mp4` (10 seconds, no sound, it loops).
+
+- **Hide it:** in `edit-me.js`, set `introVideo: "",`
+- **Use a different video:** upload an `.mp4` to the `media` folder (**Add file** → **Upload files**). Keep it under about 10 MB, and use a wide 16:9 shape. Then set `introVideo: "media/your-video.mp4",`
+- **The still shown before it plays:** upload a picture to `media` and set `introPoster` to its name.

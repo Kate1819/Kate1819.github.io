@@ -102,6 +102,20 @@ h2{font-weight:800;font-size:clamp(44px,6.4vw,84px);line-height:1;letter-spacing
 h2 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .sec-head p{color:var(--muted);font-size:21px;margin:0;font-weight:500}
 
+/* film */
+.film{padding:40px 0 0}
+.film-card{position:relative;border-radius:36px;overflow:hidden;aspect-ratio:16/9;background:#fff;scale:var(--fs,1);
+  box-shadow:0 40px 90px -40px rgba(60,40,140,.35),0 0 0 1px var(--line)}
+.film-card video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.film-btn{position:absolute;right:18px;bottom:18px;width:44px;height:44px;border-radius:50%;border:0;cursor:pointer;display:grid;place-items:center;
+  background:rgba(29,29,31,.55);color:#fff;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:background .2s}
+.film-btn:hover{background:rgba(29,29,31,.8)}
+.film-btn svg{width:16px;height:16px}
+.film-btn .i-play{display:none}
+.film-btn.paused .i-play{display:block}
+.film-btn.paused .i-pause{display:none}
+@media (max-width:560px){.film-card{border-radius:22px}.film-btn{width:38px;height:38px;right:12px;bottom:12px}}
+
 /* projects */
 .work{display:flex;flex-direction:column;gap:28px}
 .project{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);align-items:center;gap:0;background:var(--soft);border-radius:32px;position:relative;isolation:isolate;height:auto}
@@ -234,6 +248,15 @@ footer a:hover{color:var(--ink)}
 </div></div></div>
 
 <main>
+<section class="film" id="film">
+  <div class="wrap">
+    <div class="film-card" id="film-card">
+      <video id="intro-video" src="media/kate-intro.mp4" poster="media/kate-intro-poster.jpg" muted loop playsinline preload="metadata" aria-label="A short intro film: hello, I'm Kate"></video>
+      <button class="film-btn" id="film-btn" type="button" aria-label="Pause the film"><svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><rect x="3.5" y="2.5" width="3" height="11" rx="1" fill="currentColor"/><rect x="9.5" y="2.5" width="3" height="11" rx="1" fill="currentColor"/></svg><svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 2.8v10.4L13 8z" fill="currentColor"/></svg></button>
+    </div>
+  </div>
+</section>
+
 <section id="work">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -419,6 +442,24 @@ footer a:hover{color:var(--ink)}
 
   $('yr').textContent = new Date().getFullYear();
 
+  // ---- intro film ----
+  var vid = $('intro-video'), fbtn = $('film-btn');
+  if (P.introVideo === '') { $('film').remove(); vid = null; }
+  else if (vid){
+    if (P.introVideo) vid.src = P.introVideo;
+    if (P.introPoster) vid.poster = P.introPoster;
+    var userPaused = false, reduceM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function sync(){ fbtn.classList.toggle('paused', vid.paused); fbtn.setAttribute('aria-label', vid.paused ? 'Play the film' : 'Pause the film'); }
+    vid.addEventListener('play', sync); vid.addEventListener('pause', sync);
+    fbtn.addEventListener('click', function(){ if (vid.paused){ userPaused = false; vid.play(); } else { userPaused = true; vid.pause(); } });
+    if ('IntersectionObserver' in window) new IntersectionObserver(function(es){
+      var on = es[0].isIntersecting;
+      if (on && !userPaused && !reduceM){ var pr = vid.play(); if (pr && pr.catch) pr.catch(function(){}); }
+      else if (!on) vid.pause();
+    }, {threshold:.35}).observe(vid);
+    sync();
+  }
+
   // ---- light / dark switch (light unless the visitor picks dark) ----
   var root = document.documentElement, modeBtn = $('mode');
   function setMode(m){ root.dataset.theme = m; modeBtn.setAttribute('aria-label', m === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'); }
@@ -439,6 +480,7 @@ footer a:hover{color:var(--ink)}
   var bar = $('progress'), track = document.querySelector('.marquee .track'), stage = $('stage');
   var tiles = document.querySelectorAll('.collage .tile'), depth = [16, -10, 10, -16];
   var drift = 0, last = performance.now();
+  function cl01(v){ return Math.max(0, Math.min(1, v)); }
   function frame(now){
     var dt = Math.min(64, now - last); last = now;
     var y = scrollY, vh = innerHeight, max = document.documentElement.scrollHeight - vh;
@@ -451,6 +493,8 @@ footer a:hover{color:var(--ink)}
       drift += dt * .035;
       var half = track.scrollWidth / 2 || 1;
       track.style.transform = 'translateX(' + (-((drift + y * .5) % half)) + 'px)';
+      var fc = $('film-card');
+      if (fc){ var fr = fc.getBoundingClientRect(), fk = cl01((vh - fr.top) / (vh * .7)); fc.style.setProperty('--fs', (.88 + .12 * fk).toFixed(4)); }
       document.querySelectorAll('.shot').forEach(function(s){
         var r = s.getBoundingClientRect();
         if (r.bottom < -50 || r.top > vh + 50) return;
