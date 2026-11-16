@@ -34,6 +34,12 @@ window.PROFILE = {
   introVideo: "media/kate-intro.mp4",
   introPoster: "media/kate-intro-poster.jpg",   // the still shown before it plays
 
+  // Cheerful background music, made by the page itself (no music files).
+  // Browsers only allow sound after a visitor taps or clicks, so it starts
+  // on their first tap. Visitors can always switch it off with the note button.
+  music: true,               // false removes the music and its button
+  musicOnFirstTap: true,     // false: music only starts when the note button is pressed
+
   // ---------------- ABOUT ----------------
   // A few short paragraphs about you. Each paragraph goes in its own quotes,
   // separated by commas. The first one is shown larger.

@@ -17,6 +17,7 @@ You can do everything on this page in the GitHub website. You don't need to inst
 6. [Hide a project](#6-hide-a-project)
 7. [If something goes wrong](#7-if-something-goes-wrong)
 8. [Change or hide the intro film](#8-change-or-hide-the-intro-film)
+9. [Music](#9-music)
 
 ---
 
@@ -157,3 +158,14 @@ The short film under the top of the page is `media/kate-intro.mp4` (10 seconds, 
 - **Hide it:** in `edit-me.js`, set `introVideo: "",`
 - **Use a different video:** upload an `.mp4` to the `media` folder (**Add file** → **Upload files**). Keep it under about 10 MB, and use a wide 16:9 shape. Then set `introVideo: "media/your-video.mp4",`
 - **The still shown before it plays:** upload a picture to `media` and set `introPoster` to its name.
+
+---
+
+## 9. Music
+
+Your site plays a cheerful tune that the page makes itself, so there are no music files.
+
+- Browsers don't allow any website to play sound by itself, so the music starts the first time a visitor taps or clicks anywhere on the page.
+- Visitors can switch it on or off with the **note button** at the top. The site remembers their choice.
+- **Only play when the note button is pressed:** in `edit-me.js`, set `musicOnFirstTap: false,`
+- **Remove the music completely:** set `music: false,`
