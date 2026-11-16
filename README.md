@@ -15,6 +15,9 @@ My little universe of interactive worlds.
 
 ## Updating the site
 
+**Full step-by-step guide: [GUIDE.md](GUIDE.md)**
+
+
 Everything you write lives in **`edit-me.js`**: name, intro, about, skills, background, links, projects and the words in the ribbon. Open it on GitHub, click the pencil, change the text between the quotes and click **Commit changes**. Anything left empty stays hidden. The site updates in about a minute.
 
 ## Adding a new project
