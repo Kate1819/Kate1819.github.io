@@ -46,7 +46,7 @@ nav ul a:hover{color:var(--text)}
 /* hero */
 .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:center;overflow:hidden}
 #sky{position:absolute;inset:0;width:100%;height:100%}
-.glow{position:absolute;border-radius:50%;filter:blur(90px);opacity:.38;pointer-events:none}
+.glow{position:absolute;border-radius:50%;filter:blur(110px);opacity:.22;pointer-events:none}
 .g1{width:520px;height:520px;background:var(--violet);top:-160px;right:-120px}
 .g2{width:420px;height:420px;background:var(--teal);bottom:-200px;left:-120px;opacity:.22}
 .g3{width:260px;height:260px;background:var(--amber);top:38%;right:22%;opacity:.14}
@@ -74,23 +74,18 @@ h2 em{font-style:italic;color:var(--violet)}
 .sec-head p{color:var(--muted);max-width:420px;margin:0}
 
 /* work */
-.work{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
-.project{--accent:var(--teal);background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s,box-shadow .35s}
-.project:hover{transform:translateY(-6px);border-color:color-mix(in srgb,var(--accent) 45%,transparent);box-shadow:0 30px 60px -30px color-mix(in srgb,var(--accent) 50%,transparent)}
-.project.featured{grid-column:1/-1;display:grid;grid-template-columns:1.35fr 1fr}
+.work{display:grid;grid-template-columns:repeat(2,1fr);gap:72px 48px}
+.project{--accent:var(--teal);display:flex;flex-direction:column}
+.project .shot{border-radius:var(--radius);border:1px solid var(--line);transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s}
+.project:hover .shot{transform:translateY(-4px);box-shadow:0 30px 60px -34px color-mix(in srgb,var(--accent) 60%,transparent)}
 .shot{position:relative;display:block;overflow:hidden;aspect-ratio:1200/630;background:#0a0a14}
-.featured .shot{aspect-ratio:auto;min-height:100%}
 .shot img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
 .project:hover .shot img{transform:scale(1.035)}
-.body{padding:30px 32px 32px;display:flex;flex-direction:column;flex:1}
-.featured .body{padding:44px 44px 40px;justify-content:center}
+.body{padding:26px 4px 0;display:flex;flex-direction:column;flex:1}
 .kind{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--accent);margin:0 0 12px}
-h3{font:400 34px/1.1 Fraunces,Georgia,serif;margin:0 0 6px}
-.featured h3{font-size:44px}
+h3{font:400 32px/1.1 Fraunces,Georgia,serif;margin:0 0 4px}
 .tagline{font:italic 400 19px/1.4 Fraunces,Georgia,serif;color:#d9d4e6;margin:0 0 16px}
-.desc{color:var(--muted);margin:0 0 22px;font-size:16px}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px;padding:0;list-style:none}
-.tags li{font-size:13px;color:#cfcae0;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid var(--line)}
+.desc{color:var(--muted);margin:0 0 18px;font-size:16px;max-width:460px}
 .links{display:flex;gap:22px;margin-top:auto;align-items:center}
 .links a{font-weight:600;font-size:15px;text-decoration:none;display:inline-flex;gap:8px;align-items:center}
 .links a.go{color:var(--accent)}
@@ -111,12 +106,11 @@ h3{font:400 34px/1.1 Fraunces,Georgia,serif;margin:0 0 6px}
 .timeline .what{font:500 20px/1.35 Fraunces,Georgia,serif;display:block}
 .timeline .where{color:var(--muted);font-size:15px}
 .loc{color:var(--muted);margin:-24px 0 36px;font-size:15px}
-.makes{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:36px}
-.make{padding:22px;border-radius:18px;background:var(--ink-2);border:1px solid var(--line)}
-.make{position:relative;overflow:hidden}
-.make:before{content:"";position:absolute;width:120px;height:120px;border-radius:50%;background:var(--c);filter:blur(40px);opacity:.22;top:-50px;right:-40px;transition:opacity .4s}
-.make:hover:before{opacity:.45}
-.make b{display:block;font:500 18px Fraunces,Georgia,serif;margin-bottom:6px;color:var(--c)}
+.makes{display:grid;grid-template-columns:1fr 1fr;gap:28px 40px;margin-top:8px}
+.make{padding:0 0 0 20px}
+.make span{display:block}
+.make b{display:block;font:500 20px Fraunces,Georgia,serif;margin-bottom:4px}
+.make b:before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--c);margin-right:12px;vertical-align:middle;position:relative;top:-2px}
 .make span{color:var(--muted);font-size:15px;line-height:1.5}
 #ambient{position:fixed;inset:0;z-index:-1;pointer-events:none}
 #ambient div{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease}
@@ -141,13 +135,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 @media (max-width:860px){
   nav ul{gap:18px}
   .work{grid-template-columns:1fr}
-  .project.featured{display:flex}
-  .featured .shot{aspect-ratio:1200/630;min-height:0}
   .hero{min-height:0;align-items:flex-start}
   .hero .wrap{padding-top:330px;padding-bottom:110px}
-  .featured .body{padding:30px 26px 30px}
-  .featured h3{font-size:36px}
-  .body{padding:26px 24px 28px}
+  .body{padding:22px 2px 0}
+  .work{gap:56px}
   .about{grid-template-columns:1fr;gap:28px}
   section{padding:88px 0}
 }
@@ -189,7 +180,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 <header class="hero" id="top">
   <canvas id="sky" aria-hidden="true"></canvas>
-  <div class="glow g1"></div><div class="glow g2"></div>
+  <div class="glow g1"></div>
   <div class="wrap">
     <p class="eyebrow" id="p-headline">Interactive worlds · 3D · Play</p>
     <h1>Hi, I'm <em id="p-name">Kate.</em></h1>
@@ -202,7 +193,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     </div>
   </div>
   <p class="orbit-hint" aria-hidden="true">Each world is a project. Tap one to visit.</p>
-  <a class="scroll-hint" href="#work">Scroll</a>
 </header>
 
 <main>
@@ -210,12 +200,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="wrap">
     <div class="sec-head reveal">
       <h2>Selected <em>work</em></h2>
-      <p>Four interactive pieces. All of them run in the browser on desktop or phone, with their own music, and no install.</p>
+      <p>Four interactive pieces that run in any browser, each with its own music.</p>
     </div>
 
     <div class="work">
 
-      <article id="w-uptime" data-c="uptime" class="project featured reveal" style="--accent:var(--teal)">
+      <article id="w-uptime" data-c="uptime" class="project reveal" style="--accent:var(--teal)">
         <a class="shot" href="https://kate1819.github.io/uptime/" target="_blank" rel="noopener">
           <img src="images/uptime.webp" width="1200" height="630" alt="Uptime: a small 3D city at dusk where each building is a part of a software system, with cartoon engineers walking between districts">
         </a>
@@ -223,8 +213,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           <p class="kind">3D explorer · Learning</p>
           <h3>Uptime</h3>
           <p class="tagline">A system you can walk through.</p>
-          <p class="desc">How does a big app stay up? Uptime turns its architecture into a little city of 27 buildings. Follow a request across it, grow it from 100 users to 100 million, chat with the people who run it, and break things to see what users would feel.</p>
-          <ul class="tags"><li>System design</li><li>3D</li><li>Characters</li><li>Real incidents</li></ul>
+          <p class="desc">A small 3D city where every building is part of a real app. Follow a request, grow it to 100 million users, and break things to see what happens.</p>
           <div class="links">
             <a class="go" href="https://kate1819.github.io/uptime/" target="_blank" rel="noopener">Explore the city
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5"/></svg></a>
@@ -242,7 +231,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           <h3>Microcosm</h3>
           <p class="tagline">A cell you can hold.</p>
           <p class="desc">Orbit a living cell, meet its parts, then pull one out and watch what the cell does without it. No quizzes, just 27 small discoveries.</p>
-          <ul class="tags"><li>Science</li><li>3D</li><li>Sound</li></ul>
           <div class="links">
             <a class="go" href="https://kate1819.github.io/microcosm/" target="_blank" rel="noopener">Step inside
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5"/></svg></a>
@@ -260,7 +248,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           <h3>Meridian K-1</h3>
           <p class="tagline">A train made of light and brass.</p>
           <p class="desc">A futuristic locomotive inspired by mechanical wooden kits. Open the throttle and every wheel, rod and gear moves, then pull it apart or see it as a blueprint.</p>
-          <ul class="tags"><li>Product design</li><li>3D</li><li>Motion</li></ul>
           <div class="links">
             <a class="go" href="https://kate1819.github.io/meridian-k1/" target="_blank" rel="noopener">Ride it
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5"/></svg></a>
@@ -269,7 +256,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         </div>
       </article>
 
-      <article id="w-sleepy" data-c="sleepy" class="project featured reveal" style="--accent:var(--rose)">
+      <article id="w-sleepy" data-c="sleepy" class="project reveal" style="--accent:var(--rose)">
         <a class="shot" href="https://kate1819.github.io/sleepy-planet/" target="_blank" rel="noopener">
           <img src="images/sleepy-planet.webp" width="1200" height="630" alt="Sleepy Planet: Earth asleep in a pink nightcap at the centre of a violet night sky full of constellations" loading="lazy">
         </a>
@@ -277,8 +264,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           <p class="kind">Game · Play</p>
           <h3>Sleepy Planet</h3>
           <p class="tagline">Shh. Earth is dreaming.</p>
-          <p class="desc">Cheeky stars keep tumbling toward a sleeping Earth. Launch rockets to pop them before she wakes. Fourteen nights, each with a new kind of star, and every pop plays a note in the lullaby and lights up a constellation.</p>
-          <ul class="tags"><li>Game design</li><li>Characters</li><li>Music</li></ul>
+          <p class="desc">Cheeky stars tumble toward a sleeping Earth. Pop them with rockets before she wakes, and every pop plays a note in her lullaby.</p>
           <div class="links">
             <a class="go" href="https://kate1819.github.io/sleepy-planet/" target="_blank" rel="noopener">Play
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5"/></svg></a>
@@ -312,7 +298,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 </section>
 
 <section class="contact" id="contact">
-  <div class="glow"></div>
   <div class="wrap reveal">
     <p class="eyebrow">Contact</p>
     <h2>Let's <em>talk.</em></h2>
@@ -429,7 +414,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     var wide = W > 860;
     sys = wide ? {cx: Math.min(W/2 + 340, W - 320), cy: H*.5, R: Math.min(W*.2, H*.36, 300), tilt:.38, a:1}
                : {cx: W*.5, cy: 205, R: Math.min(W*.4, 230), tilt:.42, a:.9};
-    var n = Math.round(W * H / 6500); stars = [];
+    var n = Math.round(W * H / 14000); stars = [];
     for (var i = 0; i < n; i++) stars.push({
       x: Math.random()*W, y: Math.random()*H, r: Math.random()*1.2 + .3,
       p: Math.random()*6.28, s: .4 + Math.random()*1.2, v: (Math.random()-.5)*.05,
@@ -492,12 +477,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       if (d < 140){ a = Math.min(1, a + (1 - d/140)*.6); near.push(s); }
       x.fillStyle = 'rgba(' + s.h + ',' + a + ')';
       x.beginPath(); x.arc(s.x, s.y, s.r, 0, 6.283); x.fill();
-    }
-    if (near.length > 1){
-      near.sort(function(a,b){ return Math.atan2(a.y-py,a.x-px) - Math.atan2(b.y-py,b.x-px); });
-      x.strokeStyle = 'rgba(246,197,107,.2)'; x.lineWidth = .8; x.beginPath();
-      for (var j = 0; j < near.length; j++){ var n = near[j]; j ? x.lineTo(n.x,n.y) : x.moveTo(n.x,n.y); }
-      x.stroke();
     }
     // the system
     var A = sys.a, cx = sys.cx, cy = sys.cy, R = sys.R;
