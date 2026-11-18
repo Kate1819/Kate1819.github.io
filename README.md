@@ -12,6 +12,7 @@ My little universe of interactive worlds.
 - [Microcosm](https://kate1819.github.io/microcosm/): a living cell you can hold
 - [Meridian K-1](https://kate1819.github.io/meridian-k1/): a train made of light and brass
 - [Sleepy Planet](https://kate1819.github.io/sleepy-planet/): shh, Earth is dreaming
+- [The Intelligent Value Chain](https://kate1819.github.io/ai-value-chain/): how AI lifts every step of the ITIL 4 service value chain
 
 ## Updating the site
 
