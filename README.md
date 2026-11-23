@@ -33,3 +33,7 @@ To hide one again, remove the topic, or add its name to `hide` in `edit-me.js`.
 1. Upload a wide picture to the `images` folder of this repository.
 2. In `edit-me.js`, copy one of the `{ ... }` blocks under `projects`, paste it where you want the project to appear and change the text, links, `image` and `color`.
 3. Commit. A project listed by hand is never shown twice, even if it also has the topic.
+
+---
+
+© 2026 Kate. All rights reserved. The games and code on this site may not be copied or reused without permission. See [LICENSE](LICENSE).

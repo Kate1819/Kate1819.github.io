@@ -18,7 +18,7 @@ You can do everything on this page in the GitHub website. You don't need to inst
 7. [If something goes wrong](#7-if-something-goes-wrong)
 8. [Change or hide the intro film](#8-change-or-hide-the-intro-film)
 9. [Music](#9-music)
-10. [La Belle Vie help pages](#10-la-belle-vie-help-pages)
+10. [Your games and help pages on this site](#10-your-games-and-help-pages-on-this-site)
 
 ---
 
@@ -173,11 +173,15 @@ Your site plays a cheerful tune that the page makes itself, so there are no musi
 
 ---
 
-## 10. La Belle Vie help pages
+## 10. Your games and help pages on this site
 
-The folder **`la-belle-vie/`** holds the help page and privacy policy for your App Store game. Apple links to them, so please don't delete or rename this folder:
+Your game repositories are private, so nobody can read their code. The games people play on your site live in folders here instead, in a scrambled form that is hard to read or reuse:
 
-- https://kate1819.github.io/la-belle-vie/support.html
-- https://kate1819.github.io/la-belle-vie/privacy.html
+- `sleepy-planet/`, `microcosm/`, `meridian-k1/` and `uptime/` are the games. Their links stay the same as before, for example https://kate1819.github.io/sleepy-planet/
+- `la-belle-vie/` holds the help page and privacy policy for your App Store game. Apple links to them, so please don't delete or rename this folder.
 
-The game itself stays in its own private repository. To add your help email, open `la-belle-vie/support.html`, click the pencil icon, and replace the sentence "Our help email address is coming here very soon." with your email address.
+Please don't edit the game files here by hand. When a game changes, a fresh scrambled copy goes into its folder. The readable code is kept in your private project folder.
+
+To add your help email for La Belle Vie, open `la-belle-vie/support.html`, click the pencil icon, and replace the sentence "Our help email address is coming here very soon." with your email address.
+
+The file `LICENSE` says that your games and code are yours and may not be copied. Leave it in place.
