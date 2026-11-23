@@ -18,6 +18,7 @@ You can do everything on this page in the GitHub website. You don't need to inst
 7. [If something goes wrong](#7-if-something-goes-wrong)
 8. [Change or hide the intro film](#8-change-or-hide-the-intro-film)
 9. [Music](#9-music)
+10. [La Belle Vie help pages](#10-la-belle-vie-help-pages)
 
 ---
 
@@ -169,3 +170,14 @@ Your site plays a cheerful tune that the page makes itself, so there are no musi
 - Visitors can switch it on or off with the **note button** at the top. The site remembers their choice.
 - **Only play when the note button is pressed:** in `edit-me.js`, set `musicOnFirstTap: false,`
 - **Remove the music completely:** set `music: false,`
+
+---
+
+## 10. La Belle Vie help pages
+
+The folder **`la-belle-vie/`** holds the help page and privacy policy for your App Store game. Apple links to them, so please don't delete or rename this folder:
+
+- https://kate1819.github.io/la-belle-vie/support.html
+- https://kate1819.github.io/la-belle-vie/privacy.html
+
+The game itself stays in its own private repository. To add your help email, open `la-belle-vie/support.html`, click the pencil icon, and replace the sentence "Our help email address is coming here very soon." with your email address.
