@@ -175,10 +175,12 @@ Your site plays a cheerful tune that the page makes itself, so there are no musi
 
 ## 10. Your games and help pages on this site
 
-Your game repositories are private, so nobody can read their code. The games people play on your site live in folders here instead, in a scrambled form that is hard to read or reuse:
+La Belle Vie and Sleepy Planet have private repositories, so nobody can read their code. They live on your site in folders here instead:
 
-- `sleepy-planet/`, `microcosm/`, `meridian-k1/` and `uptime/` are the games. Their links stay the same as before, for example https://kate1819.github.io/sleepy-planet/
+- `sleepy-planet/` is the game, in a scrambled form that is hard to read or reuse. Its link stays the same: https://kate1819.github.io/sleepy-planet/
 - `la-belle-vie/` holds the help page and privacy policy for your App Store game. Apple links to them, so please don't delete or rename this folder.
+
+Microcosm, Meridian K-1 and Uptime keep their own public repositories, and the code in them is scrambled too.
 
 Please don't edit the game files here by hand. When a game changes, a fresh scrambled copy goes into its folder. The readable code is kept in your private project folder.
 
