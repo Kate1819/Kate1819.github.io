@@ -1,0 +1,24 @@
+{
+ "name": "La Belle Vie",
+ "short_name": "La Belle Vie",
+ "description": "Live a luxury life in Paris: run your own hotel with your manager Miles, shop the boutiques, taste French food and explore every famous sight.",
+ "start_url": "./",
+ "scope": "./",
+ "display": "fullscreen",
+ "orientation": "any",
+ "background_color": "#ffd9b8",
+ "theme_color": "#ff5d8f",
+ "icons": [
+  {
+   "src": "icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any maskable"
+  }
+ ]
+}
