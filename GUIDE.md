@@ -184,6 +184,6 @@ Microcosm, Meridian K-1 and Uptime keep their own public repositories, and the c
 
 Please don't edit the game files here by hand. When a game changes, a fresh scrambled copy goes into its folder. The readable code is kept in your private project folder.
 
-To add your help email for La Belle Vie, open `la-belle-vie/support.html`, click the pencil icon, and replace the sentence "Our help email address is coming here very soon." with your email address.
+Your help email for La Belle Vie (now called Paris Dream Girl Life), katestudio.help@gmail.com, is on both `la-belle-vie/support.html` and `la-belle-vie/privacy.html`. To change it, open each file, click the pencil icon, and replace the email address everywhere it appears.
 
 The file `LICENSE` says that your games and code are yours and may not be copied. Leave it in place.
