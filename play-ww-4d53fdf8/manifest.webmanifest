@@ -1,0 +1,24 @@
+{
+ "name": "Wander Wild",
+ "short_name": "Wander Wild",
+ "description": "A family camping road trip for kids.",
+ "start_url": "./",
+ "scope": "./",
+ "display": "fullscreen",
+ "orientation": "any",
+ "background_color": "#dff3ff",
+ "theme_color": "#22c27a",
+ "icons": [
+  {
+   "src": "icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any maskable"
+  }
+ ]
+}
